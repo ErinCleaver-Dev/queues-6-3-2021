@@ -1,57 +1,49 @@
-class Queue {
-    // Array is used to implement a queue of
-    constructor() {
-        this.items = [];
-    }
+class Stack {
+  constructor(){
+    this.data = []
+    this.top = 0;
+  }
 
-    enqueue(element) {
-        this.items.push(element);
-        return this;
-    }
+  push(element) {
+    this.data[this.top] = element;
+    this.top = this.top + 1
+    return this
+  }
 
-    dequeue() { 
+  length() {
+    return this.top;
+  }
 
-        if(this.isEmpty()) {
-            return console.log("Underflow")
-        }
-        return this.items.shift()
+  peek() {
+    return this.data[this.top-1]
+  }
+  isEmpty() {
+    if(this.data.length == 0) {
+      return true;
     }
+  }
 
-    isEmpty() {
-        if(this.items.length === 0) {
-            return true;
-        }
+  pop() {
+    if(this.isEmpty()) {
+      return "Empty"
     }
+    this.top - 1;
+    this.data.pop();
+    return this
+  }
 
-    length() {
-        return this.items.length
-    }
-
-    getFront() {
-        return this.items[0]
-    }
-
-    getLast() {
-        return this.items[this.items.length - 1];
-    }
-
-    print() { 
-        console.log(this.items);
-    }
+  print() {
+    console.log(this.data)
+  }
 
 }
 
-numbers = new Queue();
+let numbers = new Stack();
 
-numbers.enqueue(45)
-numbers.enqueue(25)
-numbers.enqueue(12).print()
-numbers.dequeue()
-numbers.print()
-numbers.dequeue()
-numbers.dequeue()
-numbers.dequeue()
-numbers.enqueue(45)
-numbers.enqueue(25)
-console.log(numbers.getFront())
-console.log(numbers.getLast())
+numbers.push(55)
+numbers.push(45)
+numbers.push(15).print()
+numbers.pop().print()
+numbers.pop().print()
+numbers.pop().print()
+console.log(numbers.pop())
