@@ -33,7 +33,7 @@ class Stack {
   }
 
   print() {
-    console.log(this.data)
+    console.log(`%c [ ${this.data} ]`, 'color: white')
   }
 
 }
